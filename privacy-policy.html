@@ -6,15 +6,100 @@
 <style>
 :root{--bg:#070817;--panel:rgba(13,14,38,.88);--gold:#f2c45c;--gold2:#ffe39a;--text:#f7f1df;--muted:#c4bfd0;--line:rgba(242,196,92,.28)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font:16px/1.72 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 78% 8%,rgba(105,42,164,.38),transparent 34%),radial-gradient(ellipse at 10% 45%,rgba(36,49,130,.28),transparent 38%),linear-gradient(150deg,#050612,#10102b 55%,#080817)}
-a{color:var(--gold2);text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(920px,calc(100% - 32px));margin:auto;padding:34px 0 64px}header{padding:22px 0 28px;border-bottom:1px solid var(--line);margin-bottom:24px;text-align:center}.brand{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-size:12px;font-weight:800}.logo{width:44px;height:44px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-family:Georgia,serif;font-size:17px;box-shadow:0 0 22px rgba(242,196,92,.18)}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,7vw,56px);line-height:1.08;margin:26px 0 12px;color:var(--gold2);font-weight:600}.lead{font-size:17px;color:var(--muted);max-width:700px;margin:auto}.meta{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:20px}.pill{border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted);font-size:12px}.lang{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:24px 0}.lang a{padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--text);font-size:13px}.lang a.active{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#191329;border-color:var(--gold);font-weight:800}.notice{background:linear-gradient(120deg,rgba(87,57,133,.28),rgba(242,196,92,.07));border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:22px 0;color:#e9e2d4}section{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:14px 0;box-shadow:0 10px 32px rgba(0,0,0,.16)}h2{font-family:Georgia,"Times New Roman",serif;font-size:21px;line-height:1.3;margin:0 0 10px;color:var(--gold2)}p{margin:8px 0;color:#e8e3ef}ul{margin:8px 0;padding-left:22px;color:#e8e3ef}li{margin:5px 0}footer{border-top:1px solid var(--line);margin-top:28px;padding-top:20px;text-align:center;color:var(--muted);font-size:13px}.lang-block{display:none}.lang-block.active{display:block}.small{font-size:13px;color:var(--muted)}
+a{color:var(--gold2);text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(920px,calc(100% - 32px));margin:auto;padding:34px 0 64px}header{padding:22px 0 28px;border-bottom:1px solid var(--line);margin-bottom:24px;text-align:center}.brand{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-size:12px;font-weight:800}.logo{width:44px;height:44px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-family:Georgia,serif;font-size:17px;box-shadow:0 0 22px rgba(242,196,92,.18)}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,7vw,56px);line-height:1.08;margin:26px 0 12px;color:var(--gold2);font-weight:600}.lead{font-size:17px;color:var(--muted);max-width:700px;margin:auto}.meta{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:20px}.pill{border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted);font-size:12px}.notice{background:linear-gradient(120deg,rgba(87,57,133,.28),rgba(242,196,92,.07));border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:22px 0;color:#e9e2d4}section{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:14px 0;box-shadow:0 10px 32px rgba(0,0,0,.16)}h2{font-family:Georgia,"Times New Roman",serif;font-size:21px;line-height:1.3;margin:0 0 10px;color:var(--gold2)}p{margin:8px 0;color:#e8e3ef}ul{margin:8px 0;padding-left:22px;color:#e8e3ef}li{margin:5px 0}footer{border-top:1px solid var(--line);margin-top:28px;padding-top:20px;text-align:center;color:var(--muted);font-size:13px}.lang-block{display:none}.lang-block.active{display:block}.small{font-size:13px;color:var(--muted)}
 @media(max-width:600px){.wrap{padding-top:20px}section{padding:18px}.lead{font-size:15px}}
+
+
+.lang-select-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+#language-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding: 10px 38px 10px 16px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  color: var(--gold2);
+  background-color: #101027;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffe39a' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+#language-select option {
+  background: #101027;
+  color: #ffe39a;
+}
 </style>
 <script>
-function setLang(lang){document.querySelectorAll('.lang-block').forEach(x=>x.classList.toggle('active',x.dataset.lang===lang));document.querySelectorAll('.lang a').forEach(x=>x.classList.toggle('active',x.dataset.pick===lang));document.documentElement.lang=lang;}
+const SUPPORTED_LANGS = ['uk','ru','en','pl','de','it','es','zh','ja','sv','el'];
+const PAGE_TEXTS = {
+  uk: ['Політика конфіденційності','Як SoulPattern використовує інформацію та захищає приватність користувачів.','Оновлено: 9 листопада 2026'],
+  ru: ['Политика конфиденциальности','Как SoulPattern использует информацию и защищает конфиденциальность пользователей.','Обновлено: 9 ноября 2026'],
+  en: ['Privacy Policy','How SoulPattern uses information and protects users’ privacy.','Updated: 9 November 2026'],
+  pl: ['Polityka prywatności','Jak SoulPattern wykorzystuje informacje i chroni prywatność użytkowników.','Aktualizacja: 9 listopada 2026'],
+  de: ['Datenschutzerklärung','Wie SoulPattern Informationen verwendet und die Privatsphäre der Nutzer schützt.','Aktualisiert: 9. November 2026'],
+  it: ['Informativa sulla privacy','Come SoulPattern utilizza le informazioni e protegge la privacy degli utenti.','Aggiornato: 9 novembre 2026'],
+  es: ['Política de privacidad','Cómo SoulPattern utiliza la información y protege la privacidad de los usuarios.','Actualizado: 9 de noviembre de 2026'],
+  zh: ['隐私政策','SoulPattern 如何使用信息并保护用户隐私。','更新日期：2026年11月9日'],
+  ja: ['プライバシーポリシー','SoulPattern による情報の利用方法とユーザーのプライバシー保護について。','更新日：2026年11月9日'],
+  sv: ['Integritetspolicy','Hur SoulPattern använder information och skyddar användarnas integritet.','Uppdaterad: 9 november 2026'],
+  el: ['Πολιτική Απορρήτου','Πώς το SoulPattern χρησιμοποιεί πληροφορίες και προστατεύει το απόρρητο των χρηστών.','Ενημερώθηκε: 9 Νοεμβρίου 2026']
+};
+function setLang(lang, updateUrl = true) {
+  if (!SUPPORTED_LANGS.includes(lang)) lang = 'uk';
+  document.querySelectorAll('.lang-block').forEach(block => {
+    block.classList.toggle('active', block.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang;
+  const select = document.getElementById('language-select');
+  if (select) select.value = lang;
+  const title = document.getElementById('page-title');
+  const lead = document.getElementById('page-lead');
+  if (title) title.textContent = PAGE_TEXTS[lang][0];
+  if (lead) lead.textContent = PAGE_TEXTS[lang][1];
+  const updatedDate = document.getElementById('updated-date');
+  if (updatedDate) updatedDate.textContent = PAGE_TEXTS[lang][2];
+  if (updateUrl) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', lang);
+    window.history.replaceState({}, '', url);
+  }
+}
+function getInitialLang() {
+  const requested = new URLSearchParams(window.location.search).get('lang');
+  if (SUPPORTED_LANGS.includes(requested)) return requested;
+  const browserLang = (navigator.language || 'uk').slice(0,2).toLowerCase();
+  return SUPPORTED_LANGS.includes(browserLang) ? browserLang : 'uk';
+}
 </script>
 </head><body><main class="wrap">
-<header><div class="brand"><div class="logo">✧</div> SOULPATTERN</div><h1>Політика конфіденційності</h1><div class="lead">Як SoulPattern використовує інформацію та захищає приватність користувачів.</div><div class="meta"><span class="pill">SoulPattern</span><span class="pill">Updated: 9 November 2026</span></div></header>
-<nav class="lang" aria-label="Language"><a href="#" data-pick="uk" onclick="setLang('uk');return false">Українська</a><a href="#" data-pick="ru" onclick="setLang('ru');return false">Русский</a><a href="#" data-pick="en" onclick="setLang('en');return false">English</a></nav>
+<header><div class="brand"><div class="logo">✧</div> SOULPATTERN</div><h1 id="page-title">Політика конфіденційності</h1><div class="lead" id="page-lead">Як SoulPattern використовує інформацію та захищає приватність користувачів.</div><div class="meta"><span class="pill">SoulPattern</span><span class="pill" id="updated-date">Updated: 9 November 2026</span></div></header>
+
+<div class="lang-select-wrapper">
+  <select id="language-select" onchange="setLang(this.value)">
+    <option value="uk">Українська</option>
+    <option value="ru">Русский</option>
+    <option value="en">English</option>
+    <option value="pl">Polski</option>
+    <option value="de">Deutsch</option>
+    <option value="it">Italiano</option>
+    <option value="es">Español</option>
+    <option value="zh">中文</option>
+    <option value="ja">日本語</option>
+    <option value="sv">Svenska</option>
+    <option value="el">Ελληνικά</option>
+  </select>
+</div>
+
 
 <div class="lang-block" data-lang="uk">
 <div class="notice">Ця Політика пояснює, які дані використовує SoulPattern, для чого вони потрібні та як користувач може керувати ними.</div>
@@ -51,5 +136,309 @@ function setLang(lang){document.querySelectorAll('.lang-block').forEach(x=>x.cla
 <section><h2>7. Age Group</h2><p>SoulPattern is intended for users aged 16 and older and is not specifically designed for younger children. A date-of-birth calculation, by itself, is not subject to a legal requirement that it be available only to people aged 18 or older. If the laws of a user’s country require parental or legal guardian consent for the processing of that user’s personal data, such consent must be obtained before using the app. We do not ask users to enter their date of birth to verify their age; it is used for the calculation.</p><p>If you believe a child’s information has been provided to us inadvertently, contact <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p></section>
 <section><h2>8. User Rights, Changes, and Contact</h2><p>Depending on the user’s country and applicable law, users may have the right to obtain information about the processing of their data, request correction or deletion, request restriction of processing, or lodge a complaint with the competent data protection authority. To contact the developer, email <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p><p>We may update this Policy. The current version, including its update date, will be published on this page.</p><p><strong>Contact:</strong> <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p></section>
 </div>
+<div class="lang-block" data-lang="pl">
+<div class="notice">Niniejsza Polityka wyjaśnia, jakie dane wykorzystuje SoulPattern, dlaczego są potrzebne i w jaki sposób użytkownik może nimi zarządzać.</div>
+<section><h2>1. O aplikacji</h2>
+<p>SoulPattern to aplikacja mobilna służąca do obliczania i interpretowania wartości liczbowych na podstawie daty urodzenia w ramach systemu numerologicznego związanego z Matrycą Przeznaczenia. Aplikacja przedstawia interpretacje dotyczące charakteru, talentów, scenariuszy życiowych, relacji, finansów i innych punktów indywidualnego wykresu. Informacje mają wyłącznie charakter informacyjny i służą samopoznaniu; nie stanowią wniosków naukowych ani nie zastępują profesjonalnej porady medycznej, psychologicznej, prawnej lub finansowej.</p>
+<p>Do korzystania z podstawowych funkcji aplikacji użytkownicy nie muszą tworzyć konta SoulPattern ani podawać adresu e-mail.</p>
+</section>
+<section><h2>2. Wykorzystywane dane</h2>
+<p><strong>Data urodzenia i wyniki obliczeń.</strong> Użytkownik podaje datę urodzenia w celu wykonania obliczeń. Zgodnie z obecną implementacją aplikacji data urodzenia i wyniki obliczeń są przechowywane lokalnie na urządzeniu i nie są wysyłane na serwer SoulPattern.</p>
+<p><strong>Dane dotyczące zakupów i subskrypcji.</strong> Jeśli użytkownik wykupi SoulPattern PRO, płatność jest przetwarzana przez Google Play, a aplikacja korzysta z RevenueCat w celu sprawdzania statusu zakupu i subskrypcji. RevenueCat może otrzymywać informacje techniczne o urządzeniu (np. typ urządzenia i system operacyjny), identyfikator użytkownika aplikacji, jeśli jest przekazywany przez SDK, czas ostatniej aktywności, informacje o transakcji oraz token zakupu Google Play. SoulPattern nie otrzymuje pełnych danych karty bankowej.</p>
+<p><strong>Informacje techniczne.</strong> Google Play, Android i zintegrowane pakiety SDK mogą przetwarzać dane techniczne niezbędne do działania aplikacji, bezpieczeństwa, diagnostyki i obsługi zakupów. Faktyczny zakres danych zależy od zintegrowanych usług i ustawień urządzenia.</p>
+</section>
+<section><h2>3. W jaki sposób wykorzystujemy dane</h2>
+<ul><li>data urodzenia — do obliczenia i interpretacji indywidualnego wykresu użytkownika;</li><li>dane dotyczące zakupów i subskrypcji — do potwierdzania płatności, sprawdzania aktywnego statusu SoulPattern PRO, przywracania zakupów i udostępniania płatnych sekcji;</li><li>dane techniczne — do zapewnienia działania aplikacji, zgodności, bezpieczeństwa i usuwania problemów technicznych.</li></ul>
+</section>
+<section><h2>4. Usługi stron trzecich i udostępnianie danych</h2>
+<p>Aplikacja współpracuje z Google Play i RevenueCat w celu obsługi zakupów i subskrypcji. Usługi te przetwarzają dane zgodnie z własnymi politykami prywatności i warunkami. SoulPattern nie otrzymuje pełnych danych płatniczych karty bankowej.</p>
+<p>Więcej informacji: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Polityka prywatności Google</a> oraz <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">Polityka prywatności RevenueCat</a>.</p>
+</section>
+<section><h2>5. Przechowywanie, bezpieczeństwo i szyfrowanie</h2>
+<p>Data urodzenia i wyniki obliczeń są przechowywane lokalnie na urządzeniu. Pozostają tam do czasu wyczyszczenia danych aplikacji SoulPattern lub odinstalowania aplikacji. Jeśli kopia zapasowa Androida jest włączona, niektóre dane aplikacji mogą zostać uwzględnione w kopii zapasowej zgodnie z ustawieniami Google.</p>
+<p>Dane przesyłane między aplikacją a usługami Google Play i RevenueCat w celu obsługi zakupów i weryfikacji subskrypcji są przesyłane przez bezpieczne, szyfrowane połączenia (TLS/HTTPS, jeśli obsługują je odpowiednie usługi). Informacja ta dotyczy transmisji danych przez te usługi i nie oznacza, że dane lokalne na urządzeniu są osobno szyfrowane przez samą aplikację SoulPattern.</p>
+<p>Podejmujemy uzasadnione działania w celu ochrony informacji, jednak żadna metoda przechowywania ani przesyłania danych nie gwarantuje całkowitego bezpieczeństwa.</p>
+</section>
+<section><h2>6. Usuwanie danych i żądania użytkowników</h2>
+<p><strong>Dane na urządzeniu.</strong> Aby usunąć datę urodzenia i wyniki obliczeń, otwórz Ustawienia Androida, znajdź SoulPattern na liście aplikacji i użyj funkcji czyszczenia pamięci/danych albo odinstaluj aplikację. Dostępność opcji czyszczenia poszczególnych danych zależy od wersji Androida i urządzenia.</p>
+<p><strong>Żądanie skierowane do dewelopera.</strong> Jeśli chcesz złożyć żądanie dotyczące danych osobowych, które mogą pozostawać pod kontrolą dewelopera, napisz na adres <a href="mailto:soulpattern863@gmail.com?subject=Żądanie%20dotyczące%20danych%20osobowych">soulpattern863@gmail.com</a> z tematem „Żądanie dotyczące danych osobowych”. Opisz, jakich danych dotyczy żądanie. Nie wysyłaj hasła, pełnych danych płatniczych ani innych zbędnych informacji poufnych. Rozpatrzymy żądanie i odpowiemy zgodnie z obowiązującym prawem.</p>
+<p><strong>Zakupy i subskrypcje.</strong> Odinstalowanie aplikacji nie anuluje subskrypcji. Subskrypcją można zarządzać, anulować ją i przeglądać historię płatności w ustawieniach konta Google Play. Żądania dotyczące danych przetwarzanych przez Google Play lub RevenueCat mogą wymagać kontaktu z odpowiednią usługą; usługi te mogą przechowywać zapisy transakcji przez okresy określone w ich politykach lub przepisach prawa.</p>
+</section>
+<section><h2>7. Wiek użytkowników</h2>
+<p>SoulPattern jest przeznaczony dla użytkowników w wieku co najmniej 16 lat i nie został opracowany specjalnie dla młodszych dzieci. Samo obliczanie na podstawie daty urodzenia nie podlega wymogowi prawnemu, zgodnie z którym byłoby dostępne wyłącznie dla osób w wieku co najmniej 18 lat. Jeśli prawo kraju użytkownika wymaga zgody rodzica lub opiekuna prawnego na przetwarzanie danych osobowych użytkownika, zgoda taka musi zostać uzyskana przed rozpoczęciem korzystania z aplikacji. Nie prosimy użytkowników o podawanie daty urodzenia w celu weryfikacji wieku — jest ona wykorzystywana do obliczeń.</p>
+<p>Jeśli uważasz, że dane dziecka zostały nam przekazane przez pomyłkę, skontaktuj się z nami pod adresem <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+<section><h2>8. Prawa użytkowników, zmiany i kontakt</h2>
+<p>W zależności od kraju użytkownika i obowiązującego prawa użytkownik może mieć prawo do uzyskania informacji o przetwarzaniu swoich danych, żądania ich poprawienia lub usunięcia, ograniczenia przetwarzania albo wniesienia skargi do właściwego organu ochrony danych. Aby skontaktować się z deweloperem, napisz na adres <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+<p>Możemy aktualizować niniejszą Politykę. Aktualna wersja wraz z datą aktualizacji jest publikowana na tej stronie.</p>
+<p><strong>Kontakt:</strong> <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+</div>
+<div class="lang-block" data-lang="de">
+<div class="notice">Diese Richtlinie erläutert, welche Daten SoulPattern verwendet, warum sie benötigt werden und wie Nutzer sie verwalten können.</div>
+<section><h2>1. Über die App</h2>
+<p>SoulPattern ist eine mobile App zur Berechnung und Interpretation numerischer Werte anhand des Geburtsdatums innerhalb eines Numerologiesystems, das mit der Matrix des Schicksals verbunden ist. Die App zeigt Interpretationen zu Charakter, Talenten, Lebensmustern, Beziehungen, Finanzen und weiteren Punkten eines individuellen Diagramms. Die Informationen dienen ausschließlich der allgemeinen Information und Selbsterkundung; sie stellen keine wissenschaftliche Schlussfolgerung dar und ersetzen keine professionelle medizinische, psychologische, rechtliche oder finanzielle Beratung.</p>
+<p>Für die Nutzung der grundlegenden Funktionen müssen Nutzer weder ein SoulPattern-Konto erstellen noch eine E-Mail-Adresse angeben.</p>
+</section>
+<section><h2>2. Verwendete Informationen</h2>
+<p><strong>Geburtsdatum und Berechnungsergebnisse.</strong> Nutzer geben ihr Geburtsdatum für die Berechnung ein. Nach der aktuellen Implementierung der App werden das Geburtsdatum und die Berechnungsergebnisse lokal auf dem Gerät gespeichert und nicht an einen SoulPattern-Server gesendet.</p>
+<p><strong>Kauf- und Abonnementinformationen.</strong> Wenn ein Nutzer SoulPattern PRO abonniert, verarbeitet Google Play die Zahlung. Die App verwendet RevenueCat, um den Kauf- und Abonnementstatus zu prüfen. RevenueCat kann dabei technische Geräteinformationen (z. B. Gerätetyp und Betriebssystem), die App-Nutzerkennung, sofern sie vom SDK übermittelt wird, den Zeitpunkt der letzten Aktivität, Transaktionsinformationen und das Google-Play-Kauftoken erhalten. SoulPattern erhält keine vollständigen Bankkartendaten.</p>
+<p><strong>Technische Informationen.</strong> Google Play, Android und integrierte SDKs können technische Daten verarbeiten, die für App-Funktionalität, Sicherheit, Diagnose und Kaufabwicklung erforderlich sind. Der tatsächliche Umfang hängt von den integrierten Diensten und den Geräteeinstellungen ab.</p>
+</section>
+<section><h2>3. Verwendung der Informationen</h2>
+<ul><li>Geburtsdatum — zur Berechnung und Interpretation des individuellen Diagramms des Nutzers;</li><li>Kauf- und Abonnementinformationen — zur Zahlungsbestätigung, Prüfung des aktiven SoulPattern-PRO-Status, Wiederherstellung von Käufen und Freischaltung kostenpflichtiger Bereiche;</li><li>technische Daten — zum Betrieb der App, zur Sicherstellung der Kompatibilität und Sicherheit sowie zur Behebung technischer Probleme.</li></ul>
+</section>
+<section><h2>4. Drittanbieter und Datenweitergabe</h2>
+<p>Die App interagiert mit Google Play und RevenueCat, um Käufe und Abonnements zu ermöglichen. Diese Dienste verarbeiten Informationen gemäß ihren eigenen Datenschutzrichtlinien und Bedingungen. SoulPattern erhält keine vollständigen Zahlungsdaten der Bankkarte.</p>
+<p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google-Datenschutzerklärung</a> und <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">RevenueCat-Datenschutzerklärung</a>.</p>
+</section>
+<section><h2>5. Speicherung, Sicherheit und Verschlüsselung</h2>
+<p>Das Geburtsdatum und die Berechnungsergebnisse werden lokal auf dem Gerät gespeichert. Sie bleiben dort, bis der Nutzer die App-Daten von SoulPattern löscht oder die App deinstalliert. Wenn Android-Backups aktiviert sind, können bestimmte App-Daten gemäß den Google-Einstellungen in einer Sicherung enthalten sein.</p>
+<p>Daten, die zwischen der App und Google Play oder RevenueCat zur Kaufabwicklung und Abonnementprüfung übertragen werden, werden über sichere verschlüsselte Verbindungen (TLS/HTTPS, sofern von den jeweiligen Diensten unterstützt) übertragen. Diese Aussage betrifft die Datenübertragung durch diese Dienste und bedeutet nicht, dass lokal gespeicherte Daten von SoulPattern selbst zusätzlich verschlüsselt werden.</p>
+<p>Wir ergreifen angemessene Maßnahmen zum Schutz von Informationen. Keine Methode der Speicherung oder Übertragung kann jedoch absolute Sicherheit garantieren.</p>
+</section>
+<section><h2>6. Datenlöschung und Nutzeranfragen</h2>
+<p><strong>Daten auf Ihrem Gerät.</strong> Um Ihr Geburtsdatum und die Berechnungsergebnisse zu löschen, öffnen Sie die Android-Einstellungen, suchen Sie SoulPattern in der App-Liste und verwenden Sie die Funktion zum Löschen des Speichers/der Daten oder deinstallieren Sie die App. Die Verfügbarkeit einzelner Löschoptionen hängt von der Android-Version und dem Gerät ab.</p>
+<p><strong>Anfrage an den Entwickler.</strong> Wenn Sie eine Anfrage zu personenbezogenen Daten stellen möchten, die möglicherweise vom Entwickler kontrolliert werden, senden Sie eine E-Mail an <a href="mailto:soulpattern863@gmail.com?subject=Anfrage%20zu%20personenbezogenen%20Daten">soulpattern863@gmail.com</a> mit dem Betreff „Anfrage zu personenbezogenen Daten“. Beschreiben Sie die betreffenden Daten. Senden Sie keine Passwörter, vollständigen Zahlungsdaten oder sonstige unnötige vertrauliche Informationen. Wir prüfen die Anfrage und antworten gemäß geltendem Recht.</p>
+<p><strong>Käufe und Abonnements.</strong> Die Deinstallation der App kündigt ein Abonnement nicht. Sie können Ihr Abonnement in den Einstellungen Ihres Google-Play-Kontos verwalten oder kündigen und Ihren Zahlungsverlauf einsehen. Anfragen zu Daten, die von Google Play oder RevenueCat verarbeitet werden, müssen gegebenenfalls an den jeweiligen Dienst gerichtet werden. Diese Dienste können Transaktionsdaten gemäß ihren Richtlinien oder gesetzlichen Vorgaben aufbewahren.</p>
+</section>
+<section><h2>7. Altersgruppe</h2>
+<p>SoulPattern ist für Nutzer ab 16 Jahren bestimmt und wurde nicht speziell für jüngere Kinder entwickelt. Für eine Berechnung anhand des Geburtsdatums besteht für sich genommen keine gesetzliche Vorgabe, dass sie ausschließlich Personen ab 18 Jahren zugänglich sein darf. Wenn das Recht des Landes eines Nutzers für die Verarbeitung seiner personenbezogenen Daten die Zustimmung eines Elternteils oder gesetzlichen Vertreters verlangt, muss diese Zustimmung vor der Nutzung der App eingeholt werden. Wir fragen das Geburtsdatum nicht zur Altersüberprüfung ab; es wird für die Berechnung verwendet.</p>
+<p>Wenn Sie glauben, dass uns versehentlich Daten eines Kindes übermittelt wurden, kontaktieren Sie uns unter <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+<section><h2>8. Nutzerrechte, Änderungen und Kontakt</h2>
+<p>Je nach Land des Nutzers und geltendem Recht kann der Nutzer das Recht haben, Auskunft über die Verarbeitung seiner Daten zu erhalten, deren Berichtigung oder Löschung oder die Einschränkung der Verarbeitung zu verlangen oder eine Beschwerde bei der zuständigen Datenschutzbehörde einzureichen. Den Entwickler erreichen Sie unter <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+<p>Wir können diese Richtlinie aktualisieren. Die aktuelle Fassung mit dem Aktualisierungsdatum wird auf dieser Seite veröffentlicht.</p>
+<p><strong>Kontakt:</strong> <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+</div>
+<div class="lang-block" data-lang="it">
+<div class="notice">La presente Informativa spiega quali dati utilizza SoulPattern, perché sono necessari e come gli utenti possono gestirli.</div>
+<section><h2>1. Informazioni sull’app</h2>
+<p>SoulPattern è un’applicazione mobile che calcola e interpreta valori numerici in base alla data di nascita nell’ambito di un sistema numerologico associato alla Matrice del Destino. L’app presenta interpretazioni relative a carattere, talenti, percorsi di vita, relazioni, finanze e altri punti di uno schema individuale. Le informazioni hanno esclusivamente finalità informative e di conoscenza di sé; non costituiscono una conclusione scientifica e non sostituiscono una consulenza medica, psicologica, legale o finanziaria professionale.</p>
+<p>Per utilizzare le funzioni principali dell’app, gli utenti non devono creare un account SoulPattern né fornire un indirizzo e-mail.</p>
+</section>
+<section><h2>2. Dati utilizzati</h2>
+<p><strong>Data di nascita e risultati dei calcoli.</strong> L’utente inserisce la data di nascita per eseguire il calcolo. Secondo l’attuale implementazione dell’app, la data di nascita e i risultati vengono archiviati localmente sul dispositivo e non vengono inviati a un server SoulPattern.</p>
+<p><strong>Informazioni su acquisti e abbonamenti.</strong> Se l’utente sottoscrive SoulPattern PRO, Google Play elabora il pagamento e l’app utilizza RevenueCat per verificare lo stato dell’acquisto e dell’abbonamento. RevenueCat può ricevere informazioni tecniche sul dispositivo (ad esempio tipo di dispositivo e sistema operativo), l’identificativo dell’utente dell’app se trasmesso dall’SDK, l’ora dell’ultima attività, informazioni sulla transazione e il token di acquisto Google Play. SoulPattern non riceve i dati completi della carta bancaria.</p>
+<p><strong>Informazioni tecniche.</strong> Google Play, Android e gli SDK integrati possono trattare dati tecnici necessari al funzionamento dell’app, alla sicurezza, alla diagnostica e alla gestione degli acquisti. I dati effettivi dipendono dai servizi integrati e dalle impostazioni del dispositivo.</p>
+</section>
+<section><h2>3. Utilizzo dei dati</h2>
+<ul><li>data di nascita — per calcolare e interpretare lo schema individuale dell’utente;</li><li>informazioni su acquisti e abbonamenti — per confermare il pagamento, verificare lo stato attivo di SoulPattern PRO, ripristinare gli acquisti e fornire accesso alle sezioni a pagamento;</li><li>dati tecnici — per garantire il funzionamento dell’app, la compatibilità, la sicurezza e la risoluzione dei problemi tecnici.</li></ul>
+</section>
+<section><h2>4. Servizi di terze parti e condivisione dei dati</h2>
+<p>L’app interagisce con Google Play e RevenueCat per supportare acquisti e abbonamenti. Questi servizi trattano le informazioni secondo le proprie informative sulla privacy e condizioni. SoulPattern non riceve i dati completi di pagamento della carta bancaria.</p>
+<p>Per saperne di più: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Informativa sulla privacy di Google</a> e <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">Informativa sulla privacy di RevenueCat</a>.</p>
+</section>
+<section><h2>5. Conservazione, sicurezza e crittografia</h2>
+<p>La data di nascita e i risultati dei calcoli sono archiviati localmente sul dispositivo. Vi rimangono finché l’utente non cancella i dati dell’app SoulPattern o disinstalla l’app. Se il backup Android è attivo, alcuni dati dell’app possono essere inclusi in una copia di backup secondo le impostazioni di Google.</p>
+<p>I dati trasmessi tra l’app e Google Play o RevenueCat per l’elaborazione degli acquisti e la verifica degli abbonamenti vengono inviati tramite connessioni sicure e crittografate (TLS/HTTPS, ove supportato dai rispettivi servizi). Questa dichiarazione riguarda la trasmissione dei dati da parte di tali servizi e non significa che i dati archiviati localmente siano crittografati separatamente da SoulPattern.</p>
+<p>Adottiamo misure ragionevoli per proteggere le informazioni, ma nessun metodo di archiviazione o trasmissione può garantire una sicurezza assoluta.</p>
+</section>
+<section><h2>6. Cancellazione dei dati e richieste degli utenti</h2>
+<p><strong>Dati sul dispositivo.</strong> Per eliminare la data di nascita e i risultati dei calcoli, apri le Impostazioni Android, trova SoulPattern nell’elenco delle app e utilizza l’opzione per cancellare la memoria/i dati oppure disinstalla l’app. La disponibilità delle singole opzioni dipende dalla versione di Android e dal dispositivo.</p>
+<p><strong>Richiesta allo sviluppatore.</strong> Per inviare una richiesta relativa ai dati personali che potrebbero essere sotto il controllo dello sviluppatore, scrivi a <a href="mailto:soulpattern863@gmail.com?subject=Richiesta%20dati%20personali">soulpattern863@gmail.com</a> con oggetto “Richiesta dati personali”. Descrivi i dati a cui si riferisce la richiesta. Non inviare password, dati di pagamento completi o altre informazioni riservate non necessarie. Esamineremo la richiesta e risponderemo in conformità alla legge applicabile.</p>
+<p><strong>Acquisti e abbonamenti.</strong> La disinstallazione dell’app non annulla un abbonamento. Puoi gestire o annullare l’abbonamento e visualizzare la cronologia dei pagamenti nelle impostazioni del tuo account Google Play. Le richieste relative ai dati trattati da Google Play o RevenueCat potrebbero dover essere indirizzate al servizio pertinente; tali servizi possono conservare i registri delle transazioni per i periodi previsti dalle proprie informative o dalla legge.</p>
+</section>
+<section><h2>7. Fascia d’età</h2>
+<p>SoulPattern è destinata a utenti di almeno 16 anni e non è stata progettata specificamente per i bambini più piccoli. Il calcolo basato sulla data di nascita, di per sé, non è soggetto a un requisito legale che ne limiti l’accesso esclusivamente alle persone di almeno 18 anni. Se la legge del paese dell’utente richiede il consenso di un genitore o tutore legale per il trattamento dei dati personali dell’utente, tale consenso deve essere ottenuto prima di utilizzare l’app. Non chiediamo la data di nascita per verificare l’età: viene utilizzata per il calcolo.</p>
+<p>Se ritieni che i dati di un minore ci siano stati forniti per errore, contattaci all’indirizzo <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+<section><h2>8. Diritti degli utenti, modifiche e contatti</h2>
+<p>A seconda del paese dell’utente e della legge applicabile, l’utente può avere il diritto di ottenere informazioni sul trattamento dei propri dati, richiederne la rettifica o la cancellazione, limitare il trattamento o presentare un reclamo all’autorità competente per la protezione dei dati. Per contattare lo sviluppatore, scrivi a <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+<p>Possiamo aggiornare la presente Informativa. La versione attuale, con la data di aggiornamento, sarà pubblicata su questa pagina.</p>
+<p><strong>Contatto:</strong> <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+</div>
+<div class="lang-block" data-lang="es">
+<div class="notice">Esta Política explica qué datos utiliza SoulPattern, por qué son necesarios y cómo los usuarios pueden gestionarlos.</div>
+<section><h2>1. Acerca de la aplicación</h2>
+<p>SoulPattern es una aplicación móvil que calcula e interpreta valores numéricos a partir de la fecha de nacimiento dentro de un sistema numerológico asociado con la Matriz del Destino. La aplicación presenta interpretaciones relacionadas con el carácter, los talentos, los patrones de vida, las relaciones, las finanzas y otros puntos de un esquema individual. La información tiene fines exclusivamente informativos y de autoconocimiento; no constituye una conclusión científica ni sustituye el asesoramiento médico, psicológico, jurídico o financiero profesional.</p>
+<p>Los usuarios no necesitan crear una cuenta de SoulPattern ni proporcionar una dirección de correo electrónico para utilizar las funciones principales de la aplicación.</p>
+</section>
+<section><h2>2. Datos que utilizamos</h2>
+<p><strong>Fecha de nacimiento y resultados del cálculo.</strong> El usuario introduce su fecha de nacimiento para realizar el cálculo. Según la implementación actual de la aplicación, la fecha de nacimiento y los resultados se almacenan localmente en el dispositivo y no se envían a un servidor de SoulPattern.</p>
+<p><strong>Información sobre compras y suscripciones.</strong> Si el usuario se suscribe a SoulPattern PRO, Google Play procesa el pago y la aplicación utiliza RevenueCat para comprobar el estado de la compra y de la suscripción. RevenueCat puede recibir información técnica del dispositivo (por ejemplo, tipo de dispositivo y sistema operativo), el identificador del usuario de la aplicación si lo transmite el SDK, la hora de la última actividad, información de la transacción y el token de compra de Google Play. SoulPattern no recibe los datos completos de la tarjeta bancaria.</p>
+<p><strong>Información técnica.</strong> Google Play, Android y los SDK integrados pueden tratar datos técnicos necesarios para el funcionamiento de la aplicación, la seguridad, el diagnóstico y el procesamiento de compras. Los datos concretos dependen de los servicios integrados y de la configuración del dispositivo.</p>
+</section>
+<section><h2>3. Cómo utilizamos los datos</h2>
+<ul><li>fecha de nacimiento: para calcular e interpretar el esquema individual del usuario;</li><li>información sobre compras y suscripciones: para confirmar el pago, comprobar el estado activo de SoulPattern PRO, restaurar compras y proporcionar acceso a las secciones de pago;</li><li>datos técnicos: para garantizar el funcionamiento, la compatibilidad y la seguridad de la aplicación, y resolver problemas técnicos.</li></ul>
+</section>
+<section><h2>4. Servicios de terceros y comunicación de datos</h2>
+<p>La aplicación interactúa con Google Play y RevenueCat para gestionar compras y suscripciones. Estos servicios tratan la información conforme a sus propias políticas de privacidad y condiciones. SoulPattern no recibe los datos completos de pago de la tarjeta bancaria.</p>
+<p>Más información: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de privacidad de Google</a> y <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">Política de privacidad de RevenueCat</a>.</p>
+</section>
+<section><h2>5. Conservación, seguridad y cifrado</h2>
+<p>La fecha de nacimiento y los resultados del cálculo se almacenan localmente en el dispositivo. Permanecen allí hasta que el usuario borra los datos de SoulPattern o desinstala la aplicación. Si la copia de seguridad de Android está activada, algunos datos de la aplicación pueden incluirse en una copia de seguridad según la configuración de Google.</p>
+<p>Los datos transmitidos entre la aplicación y Google Play o RevenueCat para procesar compras y verificar suscripciones se envían mediante conexiones cifradas y seguras (TLS/HTTPS cuando los servicios correspondientes lo admiten). Esta declaración se refiere a la transmisión de datos por dichos servicios y no significa que SoulPattern cifre por separado los datos almacenados localmente en el dispositivo.</p>
+<p>Adoptamos medidas razonables para proteger la información, pero ningún método de almacenamiento o transmisión puede garantizar una seguridad absoluta.</p>
+</section>
+<section><h2>6. Eliminación de datos y solicitudes de los usuarios</h2>
+<p><strong>Datos en el dispositivo.</strong> Para eliminar la fecha de nacimiento y los resultados del cálculo, abre los Ajustes de Android, busca SoulPattern en la lista de aplicaciones y utiliza la opción para borrar el almacenamiento/los datos o desinstala la aplicación. La disponibilidad de las opciones depende de la versión de Android y del dispositivo.</p>
+<p><strong>Solicitud al desarrollador.</strong> Si deseas realizar una solicitud sobre datos personales que puedan estar bajo el control del desarrollador, escribe a <a href="mailto:soulpattern863@gmail.com?subject=Solicitud%20de%20datos%20personales">soulpattern863@gmail.com</a> con el asunto «Solicitud de datos personales». Describe los datos a los que se refiere tu solicitud. No envíes contraseñas, datos completos de pago ni otra información confidencial innecesaria. Revisaremos la solicitud y responderemos de acuerdo con la legislación aplicable.</p>
+<p><strong>Compras y suscripciones.</strong> Desinstalar la aplicación no cancela una suscripción. Puedes gestionar o cancelar tu suscripción y consultar el historial de pagos en la configuración de tu cuenta de Google Play. Las solicitudes relativas a datos tratados por Google Play o RevenueCat pueden tener que dirigirse al servicio correspondiente; estos servicios pueden conservar registros de transacciones durante los períodos previstos en sus políticas o por ley.</p>
+</section>
+<section><h2>7. Edad de los usuarios</h2>
+<p>SoulPattern está destinada a usuarios de 16 años o más y no ha sido diseñada específicamente para niños de menor edad. El cálculo basado en la fecha de nacimiento, por sí solo, no está sujeto a un requisito legal que limite su disponibilidad exclusivamente a personas mayores de 18 años. Si la legislación del país del usuario exige el consentimiento de un progenitor o tutor legal para tratar sus datos personales, dicho consentimiento debe obtenerse antes de utilizar la aplicación. No solicitamos la fecha de nacimiento para verificar la edad; se utiliza para el cálculo.</p>
+<p>Si crees que se nos han facilitado datos de un menor por error, ponte en contacto con nosotros en <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+<section><h2>8. Derechos de los usuarios, cambios y contacto</h2>
+<p>Según el país del usuario y la legislación aplicable, el usuario puede tener derecho a obtener información sobre el tratamiento de sus datos, solicitar su rectificación o eliminación, limitar el tratamiento o presentar una reclamación ante la autoridad competente en materia de protección de datos. Para contactar con el desarrollador, escribe a <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+<p>Podemos actualizar esta Política. La versión vigente, con la fecha de actualización, se publicará en esta página.</p>
+<p><strong>Contacto:</strong> <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+</div>
+<div class="lang-block" data-lang="zh">
+<div class="notice">本政策说明 SoulPattern 使用哪些数据、使用这些数据的原因，以及用户如何管理这些数据。</div>
+<section><h2>1. 关于应用程序</h2>
+<p>SoulPattern 是一款移动应用程序，依据出生日期，按照与命运矩阵相关的数字命理体系计算并解读数值。应用程序提供有关性格、天赋、人生模式、人际关系、财务以及个人图表中其他项目的解读。相关信息仅供一般了解和自我探索之用，不构成科学结论，也不能替代专业的医疗、心理、法律或财务建议。</p>
+<p>用户无需创建 SoulPattern 账户或提供电子邮件地址即可使用应用程序的核心功能。</p>
+</section>
+<section><h2>2. 我们使用的信息</h2>
+<p><strong>出生日期和计算结果。</strong> 用户输入出生日期以进行计算。根据应用程序目前的实现，出生日期和计算结果保存在设备本地，不会发送到 SoulPattern 服务器。</p>
+<p><strong>购买和订阅信息。</strong> 如果用户订阅 SoulPattern PRO，付款由 Google Play 处理，应用程序使用 RevenueCat 检查购买和订阅状态。在此过程中，RevenueCat 可能会收到设备技术信息（例如设备类型和操作系统）、SDK 传递的应用用户标识符（如有）、最近活动时间、交易信息以及 Google Play 购买令牌。SoulPattern 不会收到完整的银行卡信息。</p>
+<p><strong>技术信息。</strong> Google Play、Android 和集成的 SDK 可能会处理应用运行、安全、诊断和购买处理所需的技术数据。实际数据范围取决于集成的服务和设备设置。</p>
+</section>
+<section><h2>3. 我们如何使用信息</h2>
+<ul><li>出生日期 — 用于计算和解读用户的个人图表；</li><li>购买和订阅信息 — 用于确认付款、检查 SoulPattern PRO 的有效状态、恢复购买以及提供付费内容访问权限；</li><li>技术数据 — 用于确保应用运行、兼容性和安全，并排查技术问题。</li></ul>
+</section>
+<section><h2>4. 第三方服务和数据共享</h2>
+<p>应用程序会与 Google Play 和 RevenueCat 交互，以支持购买和订阅。这些服务根据各自的隐私政策和条款处理信息。SoulPattern 不会收到完整的银行卡付款信息。</p>
+<p>了解更多：<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google 隐私政策</a> 和 <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">RevenueCat 隐私政策</a>。</p>
+</section>
+<section><h2>5. 存储、安全和加密</h2>
+<p>出生日期和计算结果保存在设备本地。它们会一直保留，直到用户清除 SoulPattern 应用数据或卸载应用。如果启用了 Android 备份，部分应用数据可能会根据 Google 设置包含在备份中。</p>
+<p>应用程序与 Google Play 或 RevenueCat 之间为处理购买和验证订阅而传输的数据，会通过安全加密连接（相关服务支持时使用 TLS/HTTPS）发送。本说明针对这些服务传输的数据，并不表示 SoulPattern 会对设备本地存储的数据另行加密。</p>
+<p>我们采取合理措施保护信息，但任何存储或传输方式都无法保证绝对安全。</p>
+</section>
+<section><h2>6. 数据删除和用户请求</h2>
+<p><strong>设备上的数据。</strong> 如需删除出生日期和计算结果，请打开 Android 设置，在应用列表中找到 SoulPattern，并使用清除存储空间/数据功能，或卸载应用。具体清除选项取决于 Android 版本和设备。</p>
+<p><strong>向开发者提出请求。</strong> 如果您希望就可能由开发者控制的个人数据提出请求，请发送电子邮件至 <a href="mailto:soulpattern863@gmail.com?subject=个人数据请求">soulpattern863@gmail.com</a>，主题填写“个人数据请求”。请说明请求涉及哪些数据。请勿发送密码、完整付款信息或其他不必要的机密信息。我们将审查请求并根据适用法律作出答复。</p>
+<p><strong>购买和订阅。</strong> 卸载应用不会取消订阅。您可以在 Google Play 账户设置中管理或取消订阅并查看付款记录。有关 Google Play 或 RevenueCat 处理的数据的请求，可能需要联系相应服务；这些服务可能根据其政策或法律要求保留交易记录。</p>
+</section>
+<section><h2>7. 年龄范围</h2>
+<p>SoulPattern 面向年满 16 岁的用户，并非专门为年龄更小的儿童设计。仅根据出生日期进行计算，本身并没有必须仅向年满 18 岁人士开放的法律要求。如果用户所在国家/地区的法律要求在处理其个人数据前取得父母或法定监护人的同意，则必须在使用应用前取得该同意。我们不会要求用户输入出生日期来验证年龄；出生日期仅用于计算。</p>
+<p>如果您认为儿童的数据被误提交给我们，请通过 <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a> 联系我们。</p>
+</section>
+<section><h2>8. 用户权利、变更和联系方式</h2>
+<p>根据用户所在国家/地区及适用法律，用户可能有权了解其数据的处理情况、要求更正或删除数据、限制处理，或向主管数据保护机构提出投诉。如需联系开发者，请发送邮件至 <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>。</p>
+<p>我们可能会更新本政策。当前版本及更新日期将在本页面公布。</p>
+<p><strong>联系方式：</strong> <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>。</p>
+</section>
+</div>
+<div class="lang-block" data-lang="ja">
+<div class="notice">本ポリシーでは、SoulPattern が使用するデータ、その利用目的、およびユーザーによる管理方法について説明します。</div>
+<section><h2>1. アプリについて</h2>
+<p>SoulPattern は、運命のマトリックスに関連する数秘術システムに基づき、生年月日から数値を計算・解釈するモバイルアプリです。性格、才能、人生のパターン、人間関係、金銭面、個人チャートのその他の項目に関する解釈を表示します。情報は一般的な参考および自己探求のみを目的としており、科学的な結論ではなく、専門的な医療、心理、法律、または金融上の助言に代わるものではありません。</p>
+<p>アプリの主要機能を利用するために、SoulPattern アカウントの作成やメールアドレスの提供は必要ありません。</p>
+</section>
+<section><h2>2. 使用する情報</h2>
+<p><strong>生年月日および計算結果。</strong> ユーザーは計算を行うために生年月日を入力します。現在のアプリ実装では、生年月日と計算結果は端末内にローカル保存され、SoulPattern のサーバーには送信されません。</p>
+<p><strong>購入およびサブスクリプション情報。</strong> ユーザーが SoulPattern PRO に登録した場合、支払いは Google Play が処理し、アプリは購入およびサブスクリプションの状態確認に RevenueCat を使用します。この処理で RevenueCat は、端末の種類や OS などの技術情報、SDK から送信される場合のアプリユーザー ID、最終アクティビティ時刻、取引情報、Google Play の購入トークンを受け取ることがあります。SoulPattern が銀行カードの完全な情報を受け取ることはありません。</p>
+<p><strong>技術情報。</strong> Google Play、Android、および統合された SDK は、アプリの機能、安全性、診断、購入処理に必要な技術データを処理する場合があります。実際のデータは、統合されたサービスと端末の設定によって異なります。</p>
+</section>
+<section><h2>3. 情報の利用目的</h2>
+<ul><li>生年月日 — ユーザー個人のチャートを計算し、解釈するため。</li><li>購入およびサブスクリプション情報 — 支払いの確認、SoulPattern PRO の有効状態の確認、購入の復元、有料セクションへのアクセス提供のため。</li><li>技術データ — アプリの動作、互換性、安全性の確保、および技術的な問題の解決のため。</li></ul>
+</section>
+<section><h2>4. 第三者サービスとデータ共有</h2>
+<p>アプリは購入およびサブスクリプションを提供するため、Google Play および RevenueCat と連携します。これらのサービスは、それぞれのプライバシーポリシーおよび利用規約に従って情報を処理します。SoulPattern が銀行カードの完全な決済情報を受け取ることはありません。</p>
+<p>詳細：<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google プライバシーポリシー</a> および <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">RevenueCat プライバシーポリシー</a>。</p>
+</section>
+<section><h2>5. 保存、安全性、暗号化</h2>
+<p>生年月日と計算結果は端末内にローカル保存されます。ユーザーが SoulPattern のアプリデータを消去するか、アプリをアンインストールするまで端末に残ります。Android のバックアップが有効な場合、Google の設定に従って一部のアプリデータがバックアップに含まれることがあります。</p>
+<p>購入処理およびサブスクリプション確認のためにアプリと Google Play または RevenueCat の間で送信されるデータは、各サービスが対応する場合、安全な暗号化接続（TLS/HTTPS）を通じて送信されます。この説明は各サービスによるデータ送信に関するものであり、端末内のローカルデータが SoulPattern 自身によって別途暗号化されることを意味しません。</p>
+<p>当社は情報を保護するため合理的な措置を講じますが、保存または送信の方法に絶対的な安全性を保証するものはありません。</p>
+</section>
+<section><h2>6. データの削除とユーザーからの請求</h2>
+<p><strong>端末上のデータ。</strong> 生年月日と計算結果を削除するには、Android の設定を開き、アプリ一覧から SoulPattern を選択して、ストレージ／データの消去機能を使用するか、アプリをアンインストールしてください。個別の消去機能の有無は Android のバージョンと端末によって異なります。</p>
+<p><strong>開発者への請求。</strong> 開発者が管理している可能性のある個人データについて請求する場合は、件名を「個人データに関する請求」として <a href="mailto:soulpattern863@gmail.com?subject=個人データに関する請求">soulpattern863@gmail.com</a> までメールでご連絡ください。請求の対象となるデータを説明してください。パスワード、完全な支払い情報、その他不要な機密情報は送信しないでください。当社は請求を確認し、適用法令に従って回答します。</p>
+<p><strong>購入とサブスクリプション。</strong> アプリをアンインストールしてもサブスクリプションは解約されません。Google Play アカウントの設定で、サブスクリプションの管理・解約や支払い履歴の確認ができます。Google Play または RevenueCat が処理するデータに関する請求は、該当サービスへの問い合わせが必要な場合があります。これらのサービスは、各ポリシーまたは法律で定められた期間、取引記録を保持することがあります。</p>
+</section>
+<section><h2>7. 対象年齢</h2>
+<p>SoulPattern は16歳以上のユーザーを対象としており、より低年齢の子ども向けに特別に設計されたものではありません。生年月日に基づく計算そのものについて、18歳以上の人だけに提供しなければならないという法的要件はありません。ユーザーの国の法律で個人データの処理に親または法定後見人の同意が必要な場合、アプリの利用前にその同意を得る必要があります。生年月日は年齢確認のためではなく、計算のために入力していただきます。</p>
+<p>子どもの情報が誤って当社に提供されたと思われる場合は、<a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a> までご連絡ください。</p>
+</section>
+<section><h2>8. ユーザーの権利、変更および連絡先</h2>
+<p>ユーザーの国および適用法令に応じて、データ処理に関する情報の取得、データの訂正または削除、処理の制限、あるいは管轄のデータ保護当局への苦情申立てを行う権利が認められる場合があります。開発者への連絡は <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a> までお願いします。</p>
+<p>当社は本ポリシーを更新することがあります。更新日を含む最新版はこのページに掲載されます。</p>
+<p><strong>連絡先：</strong> <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>。</p>
+</section>
+</div>
+<div class="lang-block" data-lang="sv">
+<div class="notice">Denna policy förklarar vilka uppgifter SoulPattern använder, varför de behövs och hur användare kan hantera dem.</div>
+<section><h2>1. Om appen</h2>
+<p>SoulPattern är en mobilapp som beräknar och tolkar numeriska värden utifrån födelsedatum inom ett numerologiskt system kopplat till Ödets matris. Appen visar tolkningar som rör karaktär, talanger, livsmönster, relationer, ekonomi och andra delar av en individuell karta. Informationen är endast avsedd som allmän information och för självutforskning; den utgör inte vetenskapliga slutsatser och ersätter inte professionell medicinsk, psykologisk, juridisk eller ekonomisk rådgivning.</p>
+<p>Användare behöver inte skapa ett SoulPattern-konto eller ange en e-postadress för att använda appens grundläggande funktioner.</p>
+</section>
+<section><h2>2. Uppgifter vi använder</h2>
+<p><strong>Födelsedatum och beräkningsresultat.</strong> Användaren anger sitt födelsedatum för att genomföra beräkningen. Enligt appens nuvarande implementation lagras födelsedatumet och beräkningsresultaten lokalt på enheten och skickas inte till någon SoulPattern-server.</p>
+<p><strong>Köp- och prenumerationsuppgifter.</strong> Om användaren prenumererar på SoulPattern PRO behandlar Google Play betalningen och appen använder RevenueCat för att kontrollera köpets och prenumerationens status. RevenueCat kan få teknisk information om enheten (till exempel enhetstyp och operativsystem), appens användaridentifierare om den skickas via SDK:n, tidpunkten för senaste aktivitet, transaktionsinformation och Google Plays köptoken. SoulPattern får inte tillgång till fullständiga bankkortsuppgifter.</p>
+<p><strong>Teknisk information.</strong> Google Play, Android och integrerade SDK:er kan behandla tekniska uppgifter som behövs för appens funktion, säkerhet, diagnostik och köpbehandling. Vilka uppgifter som faktiskt behandlas beror på integrerade tjänster och enhetens inställningar.</p>
+</section>
+<section><h2>3. Hur uppgifterna används</h2>
+<ul><li>födelsedatum — för att beräkna och tolka användarens individuella karta;</li><li>köp- och prenumerationsuppgifter — för att bekräfta betalning, kontrollera aktiv SoulPattern PRO-status, återställa köp och ge tillgång till betalda avsnitt;</li><li>tekniska uppgifter — för att säkerställa appens funktion, kompatibilitet och säkerhet samt åtgärda tekniska problem.</li></ul>
+</section>
+<section><h2>4. Tredjepartstjänster och delning av uppgifter</h2>
+<p>Appen samverkar med Google Play och RevenueCat för att hantera köp och prenumerationer. Dessa tjänster behandlar information enligt sina egna integritetspolicyer och villkor. SoulPattern får inte tillgång till fullständiga betalningsuppgifter för bankkort.</p>
+<p>Läs mer: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Googles integritetspolicy</a> och <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">RevenueCats integritetspolicy</a>.</p>
+</section>
+<section><h2>5. Lagring, säkerhet och kryptering</h2>
+<p>Födelsedatum och beräkningsresultat lagras lokalt på enheten. De finns kvar tills användaren rensar SoulPatterns appdata eller avinstallerar appen. Om säkerhetskopiering i Android är aktiverad kan vissa appuppgifter ingå i en säkerhetskopia enligt Googles inställningar.</p>
+<p>Uppgifter som överförs mellan appen och Google Play eller RevenueCat för köpbehandling och prenumerationsverifiering skickas via säkra, krypterade anslutningar (TLS/HTTPS där respektive tjänst stöder det). Detta avser dataöverföring via dessa tjänster och innebär inte att lokalt lagrade uppgifter krypteras separat av SoulPattern.</p>
+<p>Vi vidtar rimliga åtgärder för att skydda information, men ingen metod för lagring eller överföring kan garantera fullständig säkerhet.</p>
+</section>
+<section><h2>6. Radering av uppgifter och användarförfrågningar</h2>
+<p><strong>Uppgifter på enheten.</strong> Om du vill radera födelsedatum och beräkningsresultat öppnar du Android-inställningarna, hittar SoulPattern i applistan och använder alternativet för att rensa lagring/data eller avinstallerar appen. Tillgängliga alternativ beror på Android-version och enhet.</p>
+<p><strong>Förfrågan till utvecklaren.</strong> Om du vill göra en förfrågan om personuppgifter som kan kontrolleras av utvecklaren, skicka e-post till <a href="mailto:soulpattern863@gmail.com?subject=Begäran%20om%20personuppgifter">soulpattern863@gmail.com</a> med ämnet ”Begäran om personuppgifter”. Beskriv vilka uppgifter din förfrågan gäller. Skicka inte lösenord, fullständiga betalningsuppgifter eller annan onödig konfidentiell information. Vi granskar förfrågan och svarar enligt tillämplig lagstiftning.</p>
+<p><strong>Köp och prenumerationer.</strong> Att avinstallera appen avslutar inte en prenumeration. Du kan hantera eller avsluta prenumerationen och se betalningshistorik i inställningarna för ditt Google Play-konto. Förfrågningar om uppgifter som behandlas av Google Play eller RevenueCat kan behöva riktas till den berörda tjänsten; tjänsterna kan behålla transaktionsuppgifter under de perioder som anges i deras policyer eller i lag.</p>
+</section>
+<section><h2>7. Åldersgrupp</h2>
+<p>SoulPattern är avsedd för användare som är 16 år eller äldre och har inte särskilt utformats för yngre barn. Beräkning utifrån födelsedatum omfattas i sig inte av något lagkrav på att endast vara tillgänglig för personer som fyllt 18 år. Om lagen i användarens land kräver samtycke från en förälder eller vårdnadshavare för behandling av användarens personuppgifter måste sådant samtycke inhämtas innan appen används. Vi ber inte om födelsedatum för ålderskontroll; det används för beräkningen.</p>
+<p>Om du tror att ett barns uppgifter har lämnats till oss av misstag, kontakta oss på <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+<section><h2>8. Användarnas rättigheter, ändringar och kontakt</h2>
+<p>Beroende på användarens land och tillämplig lag kan användaren ha rätt att få information om behandlingen av sina uppgifter, begära rättelse eller radering, begära begränsning av behandlingen eller lämna klagomål till behörig dataskyddsmyndighet. Kontakta utvecklaren på <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+<p>Vi kan uppdatera denna policy. Den aktuella versionen med uppdateringsdatum publiceras på denna sida.</p>
+<p><strong>Kontakt:</strong> <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+</div>
+<div class="lang-block" data-lang="el">
+<div class="notice">Η παρούσα Πολιτική εξηγεί ποια δεδομένα χρησιμοποιεί το SoulPattern, γιατί είναι απαραίτητα και πώς μπορούν οι χρήστες να τα διαχειρίζονται.</div>
+<section><h2>1. Σχετικά με την εφαρμογή</h2>
+<p>Το SoulPattern είναι μια εφαρμογή για κινητά που υπολογίζει και ερμηνεύει αριθμητικές τιμές με βάση την ημερομηνία γέννησης, στο πλαίσιο ενός αριθμολογικού συστήματος που συνδέεται με τη Μήτρα του Πεπρωμένου. Η εφαρμογή παρουσιάζει ερμηνείες σχετικά με τον χαρακτήρα, τα ταλέντα, τα μοτίβα ζωής, τις σχέσεις, τα οικονομικά και άλλα σημεία ενός ατομικού διαγράμματος. Οι πληροφορίες παρέχονται αποκλειστικά για γενική ενημέρωση και αυτογνωσία· δεν αποτελούν επιστημονικό συμπέρασμα και δεν υποκαθιστούν επαγγελματική ιατρική, ψυχολογική, νομική ή οικονομική συμβουλή.</p>
+<p>Οι χρήστες δεν χρειάζεται να δημιουργήσουν λογαριασμό SoulPattern ή να δώσουν διεύθυνση ηλεκτρονικού ταχυδρομείου για να χρησιμοποιήσουν τις βασικές λειτουργίες της εφαρμογής.</p>
+</section>
+<section><h2>2. Πληροφορίες που χρησιμοποιούμε</h2>
+<p><strong>Ημερομηνία γέννησης και αποτελέσματα υπολογισμού.</strong> Ο χρήστης εισάγει την ημερομηνία γέννησής του για να πραγματοποιηθεί ο υπολογισμός. Σύμφωνα με την τρέχουσα υλοποίηση της εφαρμογής, η ημερομηνία γέννησης και τα αποτελέσματα αποθηκεύονται τοπικά στη συσκευή και δεν αποστέλλονται σε διακομιστή του SoulPattern.</p>
+<p><strong>Πληροφορίες αγορών και συνδρομών.</strong> Εάν ο χρήστης εγγραφεί στο SoulPattern PRO, η πληρωμή διεκπεραιώνεται από το Google Play και η εφαρμογή χρησιμοποιεί το RevenueCat για να ελέγχει την κατάσταση αγοράς και συνδρομής. Το RevenueCat ενδέχεται να λαμβάνει τεχνικές πληροφορίες συσκευής (όπως τύπο συσκευής και λειτουργικό σύστημα), το αναγνωριστικό χρήστη της εφαρμογής εφόσον διαβιβάζεται από το SDK, την ώρα τελευταίας δραστηριότητας, πληροφορίες συναλλαγής και το διακριτικό αγοράς του Google Play. Το SoulPattern δεν λαμβάνει πλήρη στοιχεία τραπεζικής κάρτας.</p>
+<p><strong>Τεχνικές πληροφορίες.</strong> Το Google Play, το Android και τα ενσωματωμένα SDK ενδέχεται να επεξεργάζονται τεχνικά δεδομένα που απαιτούνται για τη λειτουργία, την ασφάλεια, τη διάγνωση και την επεξεργασία αγορών. Τα πραγματικά δεδομένα εξαρτώνται από τις ενσωματωμένες υπηρεσίες και τις ρυθμίσεις της συσκευής.</p>
+</section>
+<section><h2>3. Πώς χρησιμοποιούμε τις πληροφορίες</h2>
+<ul><li>ημερομηνία γέννησης — για τον υπολογισμό και την ερμηνεία του ατομικού διαγράμματος του χρήστη·</li><li>πληροφορίες αγορών και συνδρομών — για την επιβεβαίωση πληρωμής, τον έλεγχο της ενεργής κατάστασης SoulPattern PRO, την επαναφορά αγορών και την παροχή πρόσβασης σε επί πληρωμή ενότητες·</li><li>τεχνικά δεδομένα — για τη λειτουργία της εφαρμογής, τη συμβατότητα, την ασφάλεια και την αντιμετώπιση τεχνικών προβλημάτων.</li></ul>
+</section>
+<section><h2>4. Υπηρεσίες τρίτων και κοινοποίηση δεδομένων</h2>
+<p>Η εφαρμογή συνεργάζεται με το Google Play και το RevenueCat για την υποστήριξη αγορών και συνδρομών. Οι υπηρεσίες αυτές επεξεργάζονται πληροφορίες σύμφωνα με τις δικές τους πολιτικές απορρήτου και τους όρους τους. Το SoulPattern δεν λαμβάνει πλήρη στοιχεία πληρωμής τραπεζικής κάρτας.</p>
+<p>Μάθετε περισσότερα: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Πολιτική Απορρήτου της Google</a> και <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">Πολιτική Απορρήτου του RevenueCat</a>.</p>
+</section>
+<section><h2>5. Αποθήκευση, ασφάλεια και κρυπτογράφηση</h2>
+<p>Η ημερομηνία γέννησης και τα αποτελέσματα υπολογισμού αποθηκεύονται τοπικά στη συσκευή. Παραμένουν εκεί μέχρι ο χρήστης να διαγράψει τα δεδομένα της εφαρμογής SoulPattern ή να απεγκαταστήσει την εφαρμογή. Εάν είναι ενεργοποιημένη η δημιουργία αντιγράφων ασφαλείας Android, ορισμένα δεδομένα της εφαρμογής ενδέχεται να περιλαμβάνονται σε αντίγραφο ασφαλείας σύμφωνα με τις ρυθμίσεις της Google.</p>
+<p>Τα δεδομένα που μεταδίδονται μεταξύ της εφαρμογής και του Google Play ή του RevenueCat για την επεξεργασία αγορών και την επαλήθευση συνδρομών αποστέλλονται μέσω ασφαλών κρυπτογραφημένων συνδέσεων (TLS/HTTPS, όπου υποστηρίζεται από τις αντίστοιχες υπηρεσίες). Η δήλωση αυτή αφορά τη μετάδοση δεδομένων από αυτές τις υπηρεσίες και δεν σημαίνει ότι τα τοπικά αποθηκευμένα δεδομένα κρυπτογραφούνται ξεχωριστά από το ίδιο το SoulPattern.</p>
+<p>Λαμβάνουμε εύλογα μέτρα για την προστασία των πληροφοριών, αλλά καμία μέθοδος αποθήκευσης ή μετάδοσης δεν μπορεί να εγγυηθεί απόλυτη ασφάλεια.</p>
+</section>
+<section><h2>6. Διαγραφή δεδομένων και αιτήματα χρηστών</h2>
+<p><strong>Δεδομένα στη συσκευή.</strong> Για να διαγράψετε την ημερομηνία γέννησης και τα αποτελέσματα υπολογισμού, ανοίξτε τις Ρυθμίσεις Android, βρείτε το SoulPattern στη λίστα εφαρμογών και χρησιμοποιήστε την επιλογή εκκαθάρισης αποθηκευτικού χώρου/δεδομένων ή απεγκαταστήστε την εφαρμογή. Η διαθεσιμότητα των επιλογών εξαρτάται από την έκδοση Android και τη συσκευή.</p>
+<p><strong>Αίτημα προς τον προγραμματιστή.</strong> Εάν θέλετε να υποβάλετε αίτημα σχετικά με προσωπικά δεδομένα που ενδέχεται να ελέγχονται από τον προγραμματιστή, στείλτε email στη διεύθυνση <a href="mailto:soulpattern863@gmail.com?subject=Αίτημα%20προσωπικών%20δεδομένων">soulpattern863@gmail.com</a> με θέμα «Αίτημα προσωπικών δεδομένων». Περιγράψτε τα δεδομένα που αφορά το αίτημά σας. Μην αποστέλλετε κωδικούς πρόσβασης, πλήρη στοιχεία πληρωμής ή άλλες περιττές εμπιστευτικές πληροφορίες. Θα εξετάσουμε το αίτημα και θα απαντήσουμε σύμφωνα με την ισχύουσα νομοθεσία.</p>
+<p><strong>Αγορές και συνδρομές.</strong> Η απεγκατάσταση της εφαρμογής δεν ακυρώνει μια συνδρομή. Μπορείτε να διαχειριστείτε ή να ακυρώσετε τη συνδρομή και να δείτε το ιστορικό πληρωμών στις ρυθμίσεις του λογαριασμού σας στο Google Play. Αιτήματα σχετικά με δεδομένα που επεξεργάζονται το Google Play ή το RevenueCat ενδέχεται να πρέπει να απευθύνονται στην αντίστοιχη υπηρεσία· οι υπηρεσίες αυτές μπορεί να διατηρούν αρχεία συναλλαγών για τις περιόδους που προβλέπονται από τις πολιτικές τους ή τον νόμο.</p>
+</section>
+<section><h2>7. Ηλικιακή ομάδα</h2>
+<p>Το SoulPattern προορίζεται για χρήστες ηλικίας 16 ετών και άνω και δεν έχει σχεδιαστεί ειδικά για μικρότερα παιδιά. Ο υπολογισμός με βάση την ημερομηνία γέννησης, από μόνος του, δεν υπόκειται σε νομική απαίτηση να είναι διαθέσιμος αποκλειστικά σε άτομα ηλικίας 18 ετών και άνω. Εάν η νομοθεσία της χώρας του χρήστη απαιτεί συγκατάθεση γονέα ή νόμιμου κηδεμόνα για την επεξεργασία των προσωπικών δεδομένων του, η συγκατάθεση αυτή πρέπει να έχει ληφθεί πριν από τη χρήση της εφαρμογής. Δεν ζητάμε την ημερομηνία γέννησης για επαλήθευση ηλικίας· χρησιμοποιείται για τον υπολογισμό.</p>
+<p>Εάν πιστεύετε ότι μας δόθηκαν κατά λάθος δεδομένα παιδιού, επικοινωνήστε μαζί μας στη διεύθυνση <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+<section><h2>8. Δικαιώματα χρηστών, αλλαγές και επικοινωνία</h2>
+<p>Ανάλογα με τη χώρα του χρήστη και την ισχύουσα νομοθεσία, ο χρήστης μπορεί να έχει δικαίωμα ενημέρωσης σχετικά με την επεξεργασία των δεδομένων του, διόρθωσης ή διαγραφής τους, περιορισμού της επεξεργασίας ή υποβολής καταγγελίας στην αρμόδια αρχή προστασίας δεδομένων. Για επικοινωνία με τον προγραμματιστή, στείλτε email στη διεύθυνση <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+<p>Ενδέχεται να ενημερώνουμε την παρούσα Πολιτική. Η ισχύουσα έκδοση, μαζί με την ημερομηνία ενημέρωσης, δημοσιεύεται σε αυτή τη σελίδα.</p>
+<p><strong>Επικοινωνία:</strong> <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a>.</p>
+</section>
+</div>
 <footer>SoulPattern · <a href="mailto:soulpattern863@gmail.com">soulpattern863@gmail.com</a></footer>
-</main><script>setLang('uk');</script></body></html>
+</main><script>setLang(getInitialLang(), false);</script></body></html>
